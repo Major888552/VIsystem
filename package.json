@@ -1,0 +1,19 @@
+{
+  "name": "init",
+  "version": "1.0.0",
+  "main": "javacde.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Major",
+  "license": "ISC",
+  "dependencies": {
+    "msql": "^1.0.3",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.78.0"
+  },
+  "keywords": [],
+  "description": ""
+}

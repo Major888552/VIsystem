@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 1</title>
+    <link rel="Stylesheet" href="bootstrap.css">
+</head>
+<body style="margin:30px">
+
+        <h1 class="vehicle">WELCOME TO VEHICLE IDENTIFICATION SYSTEM!</h1><br></div>
+            <div class="wrapper">
+                <div class="Apt">
+                    <div class="tab">
+                        <button class="success" onclick=" tab1(event, 'New Car')">New Car</button> 
+                        <button class="success" onclick="tab1(event, 'Car Record')">Car Record</button>
+                        </div> 
+                        </div>
+                       
+                    <div id="New Car" class="tabcontent">
+                        <legend> Car Brand</legend>
+                        <input type ="text" class="form_control" name="" id="item">
+                        <legend>Car Model</legend>
+                        <input type="text" class="form_control" id = "Car Model" name="">
+                        <legend>Car type</legend>
+                        <input type="text" class="form_control" id = "Car type" name="">
+                        <legend>Car Color</legend>
+                        <input type="text" class="form_control" id = "Car Color" name="">
+                        <br></br>
+                        <button id="save" class="btn-success">Save</button>
+                    </div>
+                    <div id="Car Record" class="tabcontent">
+                        <table class="table table-bordered table-hover">
+                        </table>
+
+                    </div>    
+            </div>
+    </div>
+    </div>
+    <script type="text/javascript" src="js/javacde.js">
+        var db=openDatabase("CarDB","1.0","CarDB",65535);
+        (function(){
+
+        ("#save").click(function(){
+            var Car_Brand=$("#Car Brand").val();
+            var Car_Model=$("#Car Model").val();
+            var Car_Type=$("#Car Type").val();
+            var Car_Colour=$("#Car Color").val();
+            db.transaction(function(transaction){
+            var sql="INSERT INTO detail(Car_Brand, Car_Model, Car_Type, Car_Colour) VALUES(?,?,?,?)";
+            transaction.executeSql(sql,[Car_Brand,Car_Model,Car_Type,Car_Colour],
+                function(){
+                    alert("Data has been added");
+                },function(transaction,err){
+                    alert(error.message);
+                })
+                    
+                })
+            });
+        });
+    </script>
+    <script>
+        function tab1(evt, cityName) {
+            var i, tabcontent,success;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            success = document.getElementsByClassName("success");
+            for (i = 0; i < success.length; i++) {
+                success[i].className = success[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+      </script>
+        
+</body>
+</html>
